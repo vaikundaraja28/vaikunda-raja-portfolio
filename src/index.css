@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  ::selection {
+    @apply bg-ink text-white;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tightest;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-4 outline-ink;
+  }
+}
+
+@layer components {
+  .container-edge {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12;
+  }
+
+  .section-pad {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.3em] text-charcoal;
+  }
+
+  .display-xl {
+    @apply font-display font-extrabold leading-[0.95] tracking-tightest;
+    font-size: clamp(2.75rem, 9vw, 8.5rem);
+  }
+
+  .display-lg {
+    @apply font-display font-bold leading-[0.98] tracking-tightest;
+    font-size: clamp(2rem, 5.5vw, 4.25rem);
+  }
+
+  .body-lg {
+    @apply text-base md:text-lg font-light leading-relaxed text-charcoal;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium tracking-wide text-white transition-all duration-300 hover:bg-charcoal hover:scale-[1.02] active:scale-100;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/20 px-7 py-3.5 text-sm font-medium tracking-wide text-ink transition-all duration-300 hover:border-ink hover:bg-ink hover:text-white;
+  }
+
+  .pill {
+    @apply inline-flex items-center rounded-full border border-ink/15 bg-white px-4 py-2 text-sm font-medium text-ink transition-all duration-200 hover:border-ink hover:-translate-y-0.5;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
